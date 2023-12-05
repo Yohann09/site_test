@@ -520,6 +520,7 @@ G_init = new GraphBipartite([])
 let teams = []
 for(let i=0; i<teams_json.length; i++){
   key = String(i)
+  console.log(teams_json[key])
   team = new Team(teams_json[key]["_name"], teams_json[key]["_country"], teams_json[key]["_group"], teams_json[key]["_set"])
   teams.push(team)
 }
