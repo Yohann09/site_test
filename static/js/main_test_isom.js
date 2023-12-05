@@ -28,6 +28,7 @@ if (xhr_teams.status === 200) {
 } else {
   console.error('Erreur de chargement du fichier JSON teams_json');
 }
+console.log(teams_json)
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 /* Fonction qui fait l'appel à la base de donnée pour charger la base de donnée et renvoie un dictionnaire
 de proba ou remplit elle même le tableau */
