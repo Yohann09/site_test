@@ -18,7 +18,7 @@ if (xhr.status === 200) {
 const url_teams = "static/teams.json";
 let xhr_teams = new XMLHttpRequest();
 xhr_teams.overrideMimeType("application/json");
-xhr_teams.open("GET", url, false); // Notez-le "false" pour le mode synchrone
+xhr_teams.open("GET", url_teams, false); // Notez-le "false" pour le mode synchrone
 xhr_teams.send();
 
 let teams_json;
