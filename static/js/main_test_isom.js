@@ -54,7 +54,6 @@ function fill_all2(){
                 let id = Runners_up[i] + " " + Winners[j]
                 let cell = document.getElementById(id)
                 proba_number = resultat[q][String(G_init.index_eq_runner(G_init.index_name(change_bySpace(Runners_up[i])), permR))+", "+G_init.index_eq_winner(G_init.index_name(change_bySpace(Winners[j])), permC)]
-                console.log(q)
                 cell.textContent = String(proba_number)+"%"
             }
         }
