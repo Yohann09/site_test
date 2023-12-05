@@ -554,8 +554,8 @@ buttonTeamContainer.appendChild(nameSection)
 //let runners_resultat = ['Liverpool', 'Brugge', 'Inter', 'Frankfurt', 'AC Milan', 'Leipzig', 'Dortmund', 'PSG']
 //let winners_resultat = ['Napoli', 'Porto', 'Bayern', 'Tottenham', 'Chelsea', 'Real Madrid', 'Manchester City', 'Benfica']
 let runners_resultat = []
-let Winners;
-let Runners_up;
+let Winners= [];
+let Runners_up= [];
 G_init.runners_up().forEach(function(name){
   runners_resultat.push(name)
   Runners_up.push(changeSpaceby_(name))
