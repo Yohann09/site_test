@@ -517,7 +517,7 @@ function binaire_to_deci(binaire){
 
 G_init = new GraphBipartite([])
 let teams
-for(let i=0, i<teams_json.length, i++){
+for(let i=0; i<teams_json.length; i++){
   key = String(i)
   team = new Team(teams_json[key]["_name"], teams_json[key]["_country"], teams_json[key]["_group"], teams_json[key]["_set"])
   teams.push(team)
