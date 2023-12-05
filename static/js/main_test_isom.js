@@ -340,8 +340,8 @@ class GraphBipartite {
 
     sort_col(matrix, permutation) {
         // pareil avec les colonnes
-        const scores = [];
-        const perm = [...permutation];
+        let scores = [];
+        let perm = [...permutation];
         for (let j = 0; j < matrix[0].length; j++) {
             let sum = 0;
             for (let i = 0; i < matrix.length; i++) {
@@ -445,7 +445,7 @@ class GraphBipartite {
                 binaryString += element.toString();
             }
         }
-        let q;
+        let q = " ";
         if(binaryString.length<=32){
             q=String(parseInt(binaryString,2))
         }else{
@@ -554,8 +554,8 @@ buttonTeamContainer.appendChild(nameSection)
 //let runners_resultat = ['Liverpool', 'Brugge', 'Inter', 'Frankfurt', 'AC Milan', 'Leipzig', 'Dortmund', 'PSG']
 //let winners_resultat = ['Napoli', 'Porto', 'Bayern', 'Tottenham', 'Chelsea', 'Real Madrid', 'Manchester City', 'Benfica']
 let runners_resultat = []
-let Winners= [];
-let Runners_up= [];
+let Winners = [];
+let Runners_up = [];
 G_init.runners_up().forEach(function(name){
   runners_resultat.push(name)
   Runners_up.push(changeSpaceby_(name))
@@ -565,6 +565,10 @@ G_init.winners().forEach(function(name){
   winners_resultat.push(name)
   Winners.push(changeSpaceby_(name))
 })
+console.log(G_init.winners())
+console.log(G_init.runners_up())
+console.log(winners_resultat)
+console.log(runners_resultat)
 
 let affichage_winners = false  // pour savoir quel type de boutons est affiché
 let affichage_heatmap = false
