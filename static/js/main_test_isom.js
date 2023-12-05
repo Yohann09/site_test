@@ -11,10 +11,22 @@ let resultat;
 
 if (xhr.status === 200) {
   resultat = JSON.parse(xhr.responseText);
-  // Je peux maintenant utiliser myJSONData dans le reste du code
-    console.log(resultat["(4275158523, 2813304703)"]["0, 4, 1"])
 } else {
   console.error('Erreur de chargement du fichier JSON resultat');
+}
+
+const url_teams = "static/teams.json";
+let xhr_teams = new XMLHttpRequest();
+xhr_teams.overrideMimeType("application/json");
+xhr_teams.open("GET", url, false); // Notez-le "false" pour le mode synchrone
+xhr_teams.send();
+
+let teams_json;
+
+if (xhr_teams.status === 200) {
+  teams_json = JSON.parse(xhr_teams.responseText);
+} else {
+  console.error('Erreur de chargement du fichier JSON teams_json');
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 /* Fonction qui fait l'appel à la base de donnée pour charger la base de donnée et renvoie un dictionnaire
@@ -504,41 +516,11 @@ function binaire_to_deci(binaire){
 }
 
 G_init = new GraphBipartite([])
-team_1 = new Team("Napoli", "it", "A", "winner");
-team_2 = new Team("Liverpool", "en", "A", "runner up");
-team_3 = new Team("Porto", "pt", "B", "winner");
-team_4 = new Team("Brugge", "be", "B", "runner up");
-team_5 = new Team("Bayern", "de", "C", "winner");
-team_6 = new Team("Inter", "it", "C", "runner up");
-team_7 = new Team("Tottenham", "en", "D", "winner");
-team_8 = new Team("Frankfurt", "de", "D", "runner up");
-team_9 = new Team("Chelsea", "en", "E", "winner");
-team_10 = new Team("AC Milan", "it", "E", "runner up");
-team_11 = new Team("Real Madrid", "es", "F", "winner");
-team_12 = new Team("Leipzig", "de", "F", "runner up");
-team_13 = new Team("Manchester City", "en", "G", "winner");
-team_14 = new Team("Dortmund", "de", "G", "runner up");
-team_15 = new Team("Benfica", "pt", "H", "winner");
-team_16 = new Team("PSG", "fr", "H", "runner up");
-
-teams = [];
-
-teams.push(team_1);
-teams.push(team_2);
-teams.push(team_3);
-teams.push(team_4);
-teams.push(team_5);
-teams.push(team_6);
-teams.push(team_7);
-teams.push(team_8);
-teams.push(team_9);
-teams.push(team_10);
-teams.push(team_11);
-teams.push(team_12);
-teams.push(team_13);
-teams.push(team_14);
-teams.push(team_15);
-teams.push(team_16);
+let teams
+for(let i=0, i<teams_json.length, i++){
+  key = String(i)
+  team = new Team(teams_json[key]["_name"], teams_json[key]["_country"], teams_json[key]["_group"], teams_json[key]["_set"])
+  teams.push(team)
 
 teams.forEach(element => {
     G_init.add_team(element)
