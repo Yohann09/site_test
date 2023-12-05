@@ -521,6 +521,7 @@ for(let i=0, i<teams_json.length, i++){
   key = String(i)
   team = new Team(teams_json[key]["_name"], teams_json[key]["_country"], teams_json[key]["_group"], teams_json[key]["_set"])
   teams.push(team)
+}
 
 teams.forEach(element => {
     G_init.add_team(element)
@@ -546,11 +547,25 @@ nameSection.textContent = "Draw teams: "
 buttonTeamContainer.appendChild(nameSection)
 
 // Nom des équipes en un morceau plus pratique à manipuler
-let Winners = ["Napoli", "Porto", "Bayern", "Tottenham", "Chelsea", "Real_Madrid", "Manchester_City", "Benfica"];
-let Runners_up = ["Liverpool", "Brugge", "Inter", "Frankfurt", "AC_Milan", "Leipzig", "Dortmund", "PSG"]
+//let Winners = ["Napoli", "Porto", "Bayern", "Tottenham", "Chelsea", "Real_Madrid", "Manchester_City", "Benfica"];
+//let Runners_up = ["Liverpool", "Brugge", "Inter", "Frankfurt", "AC_Milan", "Leipzig", "Dortmund", "PSG"]
 // Liste des équipes comme elles sont écrites dans le fichier resultat.json
-let runners_resultat = ['Liverpool', 'Brugge', 'Inter', 'Frankfurt', 'AC Milan', 'Leipzig', 'Dortmund', 'PSG']
-let winners_resultat = ['Napoli', 'Porto', 'Bayern', 'Tottenham', 'Chelsea', 'Real Madrid', 'Manchester City', 'Benfica']
+
+//let runners_resultat = ['Liverpool', 'Brugge', 'Inter', 'Frankfurt', 'AC Milan', 'Leipzig', 'Dortmund', 'PSG']
+//let winners_resultat = ['Napoli', 'Porto', 'Bayern', 'Tottenham', 'Chelsea', 'Real Madrid', 'Manchester City', 'Benfica']
+let runners_resultat = []
+let Winners;
+let Runners_up;
+G_init.runners_up().forEach(function(name){
+  runners_resultat.push(name)
+  Runners_up.push(changeSpaceby_(name))
+})
+let winners_resultat = []
+G_init.winners().forEach(function(name){
+  winners_resultat.push(name)
+  Winners.push(changeSpaceby_(name))
+})
+
 let affichage_winners = false  // pour savoir quel type de boutons est affiché
 let affichage_heatmap = false
 
