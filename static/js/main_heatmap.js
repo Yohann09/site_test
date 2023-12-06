@@ -1027,113 +1027,28 @@ Winners.forEach(function(name){
 })
 team_line.className = "team-line"
 table.appendChild(team_line)
-let clicked_i = -1
-let clicked_j = -1
-function emphasizeCross(i, j){
-let cells = document.querySelectorAll("td,th")
-cells.forEach(function(cell){
-cell.classList.remove('opacite_reduite')
-})
-if(!(clicked_i == i && clicked_j==j)){
-cells.forEach(function(cell){
-if(!(cell.id.includes(Runners_up[i]) || cell.id.includes(Winners[j]))){
-cell.classList.add('opacite_reduite')
-}
-})
-clicked_i = i
-clicked_j = j
-}
-else{
-clicked_i = -1
-clicked_j = -1
-}
-}
-
-function emphasizeLine(i){
-let cells = document.querySelectorAll("td,th")
-cells.forEach(function(cell){
-cell.classList.remove('opacite_reduite')
-})
-if(!(clicked_i == i && clicked_j==-1)){
-cells.forEach(function(cell){
-if(!(cell.id.includes(Runners_up[i]))){
-cell.classList.add('opacite_reduite')
-}
-})
-clicked_i = i
-clicked_j = -1
-}
-else{
-clicked_i = -1
-clicked_j = -1
-}
-}
-
-function emphasizeColumn(j){
-let cells = document.querySelectorAll("td,th")
-cells.forEach(function(cell){
-cell.classList.remove('opacite_reduite')
-})
-if(!(clicked_i == -1 && clicked_j==j)){
-cells.forEach(function(cell){
-if(!(cell.id.includes(Winners[j]))){
-cell.classList.add('opacite_reduite')
-}
-})
-clicked_i = -1
-clicked_j = j
-}
-else{
-clicked_i = -1
-clicked_j = -1
-}
-}
-
-// Rempli le tableau des probas
-// Rempli la première ligne avec les équipes
-let table = document.getElementById("proba-table")
-let team_line = document.createElement("tr")
-let vide = document.createElement("th")
-vide.classList.add("void-cell")
-team_line.appendChild(vide)
-Winners.forEach(function(name, index){
-let team = document.createElement("th")
-team.textContent = change_bySpace(name)
-team.className = "team-cell " + name // ajoute une classe pour que la cellule s'illumine quand équipe sélectionnée
-team.setAttribute('id', name)
-team.addEventListener('click', function(){emphasizeColumn(index)})
-team.classList.add('pointer')
-team_line.appendChild(team)
-})
-team_line.className = "team-line"
-table.appendChild(team_line)
 // Rempli le reste du tableau par les probas initiales
 for(let i=0; i<Runners_up.length; i++){
-let line = document.createElement("tr")
-line.id = Runners_up[i]
-for(let j=0;j<Winners.length+1;j++){
-if(j===0) {
-let team = document.createElement("td")
-team.textContent = change_bySpace(Runners_up[i])
-team.className = "cell-team " + Runners_up[i] // ajoute une classe pour que la cellule s'illumine quand équipe sélectionnée
-team.setAttribute('id', Runners_up[i])
-team.addEventListener('click', function(){emphasizeLine(i)})
-team.classList.add('pointer')
-line.appendChild(team)
-}else{
-let cell = document.createElement("td")
-// cell.textContent = String(i)+String(j) // ce que je faisais avant de mettre les probas
-// code pour l'id des cellules de proba: runners_up en premier, puis winner séparé par un espace
-cell.id = Runners_up[i]+" "+ Winners[j-1]
-cell.className = "proba-cell " + Winners[j-1] +" "+ Runners_up[i] // ajoute une classe pour que la cellule s'illumine quand équipe sélectionnée
-//change_proba(cell,"('Liverpool', 'Brugge', 'Inter', 'Frankfurt', 'AC Milan', 'Leipzig', 'Dortmund', 'PSG'), ('Napoli', 'Porto', 'Bayern', 'Tottenham', 'Chelsea', 'Real Madrid', 'Manchester City', 'Benfica')",change_bySpace(Runners_up[i])+", "+change_bySpace(Winners[j-1]))
-cell.addEventListener('click', function(){emphasizeCross(i, j-1)})
-cell.classList.add('pointer')
-line.appendChild(cell)
-}
-}
-line.className = "proba-line"
-table.appendChild(line)
+  let line = document.createElement("tr")
+  for(let j=0;j<Winners.length+1;j++){
+    if(j===0) {
+      let team = document.createElement("td")
+      team.textContent = change_bySpace(Runners_up[i])
+      team.className = "cell-team " + Runners_up[i] // ajoute une classe pour que la cellule s'illumine quand équipe sélectionnée
+      line.appendChild(team)
+    }else{
+      let cell = document.createElement("td")
+      // cell.textContent = String(i)+String(j) // ce que je faisais avant de mettre les probas
+      cell.textContent = "..."
+      // code pour l'id des cellules de proba: runners_up en premier, puis winner séparé par un espace
+      cell.id = Runners_up[i]+" "+ Winners[j-1]
+      cell.className = "proba-cell " + Winners[j-1] +" "+ Runners_up[i] // ajoute une classe pour que la cellule s'illumine quand équipe sélectionnée
+      //change_proba(cell,"('Liverpool', 'Brugge', 'Inter', 'Frankfurt', 'AC Milan', 'Leipzig', 'Dortmund', 'PSG'), ('Napoli', 'Porto', 'Bayern', 'Tottenham', 'Chelsea', 'Real Madrid', 'Manchester City', 'Benfica')",change_bySpace(Runners_up[i])+", "+change_bySpace(Winners[j-1]))
+      line.appendChild(cell)
+    }
+  }
+  line.className = "proba-line"
+  table.appendChild(line)
 }
 fill_all()
 verif_zero()
