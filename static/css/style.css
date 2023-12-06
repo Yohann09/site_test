@@ -56,3 +56,7 @@ custom-link{
     text-decoration: none;
     color: red;
 }
+
+.opacite_reduite{
+opacity: 0.4;
+}
