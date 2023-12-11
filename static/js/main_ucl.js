@@ -837,7 +837,7 @@ for(let i=0;i<Winners.length;i++){
     for (let j = 0; j < 3; j++) {
         if (j === 1) {
             let new_cell = document.createElement("td")
-            new_cell.textContent = " VS "
+            new_cell.textContent = " - "
             new_cell.className = "cell-center"
             new_line.appendChild(new_cell)
         } else {
