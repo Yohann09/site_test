@@ -195,10 +195,10 @@
 
 #footer{
     background-color: lightgrey;
-    /*position: absolute;
+    position: absolute;
     bottom: 0;
     left: 0;
-    right: 0;*/
+    right: 0;
     color: #484848;
     order:1;
     width:100%
