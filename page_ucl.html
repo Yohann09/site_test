@@ -1,10 +1,12 @@
-{% extends 'base.html' %}  <!-- pour utiliser le modèle parent : base-->
 
-<!-- remplace le titre orginal qui était dans base-->
-{% block title %} Probabilités {% endblock %}
-
-{% block content %}
-    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style_table.css') }}">
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Probabilités</title>
+    </head>
+    <body>
+            <link rel="stylesheet" type="text/css" href="static/css/style_table.css">
     <h1 id = "mon-titre">Probabilités de tirage </h1>
     <div id="table-container">  <!-- section qui contient les deux tableaux-->
         <table id="match-table">
@@ -22,5 +24,6 @@
     <footer id="footer">
        <p id="mention">Developped by Akram Lamssyah, Bilel Benaich, Flavien Audibert and Yohann Canavese</p>
    </footer>
-    <script src="{{ url_for('static', filename='js/main_hoy.js') }}"></script>
-{% endblock %}
+    <script type="text/javascript" src="static/js/main_ucl.js"></script>
+    </body>
+</html>
