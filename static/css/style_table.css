@@ -182,9 +182,9 @@
     background-color: #0097c0;
     width: 100%;
     text-align: center;
-    border-radius: 10px;
+    border-radius: 3px;
     color: white;
-    height: 120%;
+    height: 2em;
 }
 
 .cell-center{
