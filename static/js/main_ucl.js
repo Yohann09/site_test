@@ -651,7 +651,8 @@ function verif_zero(){
         let cell = document.getElementById(id)
         cell.style.backgroundColor = "#75ACDA"//"#50f3db"
         //cell.textContent= "Match"
-        cell.textContent = "✔️"
+        cell.style.color = "white"; // Couleur du texte en blanc
+        cell.textContent = "\u2714"; // check blanc
     }
 }
 // Quand un match est décidé il n'y a plus de probas pour les équipes dans ce match, il y a donc des erreurs
@@ -820,7 +821,8 @@ function heatmap(){
         let cell = document.getElementById(id)
         cell.style.backgroundColor = "#75ACDA"//"#50f3db"
         //cell.textContent= "Match"
-        cell.textContent = "✔️"
+        cell.style.color = "white"; // Couleur du texte en blanc
+        cell.textContent = "\u2714"; // check blanc
     }
     if(chosen_team.length%2===1){
         let last_team = chosen_team[chosen_team.length-1].textContent
