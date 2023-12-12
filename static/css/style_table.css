@@ -198,7 +198,7 @@
 
 #footer {
     background-color: lightgrey;
-    position: absolute;
+    /* position: absolute; */
     order: 1;
     bottom: 0;
     left: 0;
