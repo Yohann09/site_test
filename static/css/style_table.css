@@ -144,8 +144,8 @@
 }
 
 .proba-cell{
-    padding: 3px;
-    font-size: 1em;
+    padding: 1px;
+    font-size: 0.9em;
     font-family: Arial, sans-serif;
     height: 3em;
     border: 0.6px solid #e6dbda;
@@ -201,7 +201,7 @@
     /* position: absolute; */
     order: 1;
     padding: 5px;
-    margin-top: 50px;
+    margin-top: 30px;
     bottom: 0;
     left: 0;
     right: 0;
