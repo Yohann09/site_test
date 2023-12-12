@@ -531,12 +531,6 @@ teams.forEach(element => {
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-document.addEventListener("DOMContentLoaded", function() {
-    // Sélectionnez l'élément h1 par son ID
-    let monTitre = document.getElementById("mon-titre");
-    // Modifiez le contenu du titre
-    monTitre.textContent = "Probabilités de tirage";
-});
 
 // Sélectionne le conteneur des boutons des équipes
 let boutonContainer = document.getElementById("bouton-container"); // contient tous les boutons et titres de
