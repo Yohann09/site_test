@@ -813,9 +813,9 @@ function heatmap(){
     for(let i=0;i<max_index/2;i++){
         let id = changeSpaceby_(chosen_team[2*i].textContent)+" "+changeSpaceby_(chosen_team[2*i+1].textContent)
         let cell = document.getElementById(id)
-        cell.style.backgroundColor = "transparent"//"#50f3db"
+        cell.style.backgroundColor = "#7da65e"//"#50f3db"
         //cell.textContent= "Match"
-        cell.style.color = "#7da65e"; // Couleur du texte en blanc
+        cell.style.color = "white"; // Couleur du texte en blanc
         cell.textContent = "\u2714"; // check blanc
     }
     if(chosen_team.length%2===1){
