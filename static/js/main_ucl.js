@@ -855,7 +855,7 @@ function add_team_to_list_match(bouton){
     let list=[]
     let other_list=[]
     if(boutons_winners.includes(bouton)){  // if affichage_winners
-        console.log("OUE OUE CA RENTRE DANS LE IF")
+        console.log("OUE OUE CA RENTRE DANS LE IF", bouton)
         list = boutons_winners
         other_list = boutons_runner    // Peut aussi se faire avec affichage_winners dans la condition
     }else{
