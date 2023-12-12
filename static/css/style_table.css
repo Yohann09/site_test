@@ -209,3 +209,11 @@
     height: 4%;
     width: 100%;
 }
+a:hover {
+    border-bottom: 1px solid;
+    background: #484848;
+}
+a {
+    color: blue;
+}
+    
