@@ -532,6 +532,19 @@ teams.forEach(element => {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// Test martrice de biais:
+
+let mat_biais = [['','COP','PSV','NAP','INT','LAZ','PSG','LEI','POR'],
+    ['BAY',0.0,-0.04,-0.04,-0.04,-0.04,0.22,0.0,-0.04],
+    ['ARS',-0.08,0.0,0.04,0.04,0.04,-0.08,0.0,0.04],
+    ['Real M',-0.08,0.04,0.0,0.04,0.04,-0.08,0.0,0.04],
+    ['Real S',-0.08,0.04,0.04,0.0,0.04,-0.08,0.0,0.04],
+    ['ATL',-0.08,0.04,0.04,0.04,0.0,-0.08,0.0,0.04],
+    ['DOR', 0.22, -0.04, -0.04, -0.04,-0.04,0.0,0.0,-0.04],
+    ['Man C',0.17, -0.07, -0.07, -0.07, -0.07, 0.17, 0.0, -0.07],
+    ['BCN', -0.08, 0.04, 0.04, 0.04, 0.04, -0.08, 0.0, 0.0]
+]
+
 // Sélectionne le conteneur des boutons des équipes
 let boutonContainer = document.getElementById("bouton-container"); // contient tous les boutons et titres de
 // sections en bas de page
@@ -1069,6 +1082,19 @@ heatmap_button.addEventListener("click",function(){
         verif_zero()
         affichage_heatmap=!affichage_heatmap
     }
+})
+
+let bouton_biais = document.createElement("button")
+bouton_biais.id = "boutons_biais"
+bouton_biais.textContent="Bias"
+optionsButtonContainer.appendChild(bouton_biais)
+bouton_biais.addEventListener("click", function(){
+    for(let i=0;i<Winners.length;i++) {
+        for (let j = 0; j < Runners_up.length; j++) {
+            let id = Runners_up[i] + " " + Winners[j]
+            let cell = document.getElementById(id)
+            console.log(mat_biais[i][j])
+            cell.textContent = mat_biais[i][j]
 })
 
 // Rempli le tableau des probas
