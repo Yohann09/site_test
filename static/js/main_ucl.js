@@ -608,8 +608,8 @@ for(let i=23;i>6;i--){
 menu_der.addEventListener('change',function(){
         let titre = document.getElementById("mon-titre")
         console.log("on y est")
-        console.log(titre)
-        titre.textContent = "Draw probabilities " + menu_der.text
+        console.log(menu_der.text)
+        titre.textContent = "Draw probabilities " + String(20) + menu_der.value
     })
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
