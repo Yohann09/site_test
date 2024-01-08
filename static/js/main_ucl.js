@@ -1,7 +1,7 @@
 // Test du chargement des probas:
 
 // Remplacez le chemin par le chemin absolu vers votre fichier JSON
-const url = "static/isom.json";
+let url = "static/isom.json";
 let xhr = new XMLHttpRequest();
 xhr.overrideMimeType("application/json");
 xhr.open("GET", url, false); // Notez-le "false" pour le mode synchrone
@@ -15,7 +15,7 @@ if (xhr.status === 200) {
   console.error('Erreur de chargement du fichier JSON resultat');
 }
 
-const url_teams = "static/teams.json";
+let url_teams = "static/teams.json";
 let xhr_teams = new XMLHttpRequest();
 xhr_teams.overrideMimeType("application/json");
 xhr_teams.open("GET", url_teams, false); // Notez-le "false" pour le mode synchrone
@@ -606,11 +606,38 @@ for(let i=23;i>6;i--){
     menu_der.add(option)
 }
 menu_der.addEventListener('change',function(){
-        let titre = document.getElementById("mon-titre")
-        console.log("on y est")
-        console.log(menu_der.text)
-        titre.textContent = "Draw probabilities " + String(20) + menu_der.value
-    })
+    let titre = document.getElementById("mon-titre")
+    titre.textContent = "Draw probabilities " + String(20) + menu_der.value
+    let annee = menu_der.value.replace(/\//g, '')
+    // Remplacez le chemin par le chemin absolu vers votre fichier JSON
+    url = "static/isom_"+annee+".json";
+    let xhr = new XMLHttpRequest();
+    xhr.overrideMimeType("application/json");
+    xhr.open("GET", url, false); // Notez-le "false" pour le mode synchrone
+    xhr.send();
+
+    //let resultat;
+
+    if (xhr.status === 200) {
+      resultat = JSON.parse(xhr.responseText);
+    } else {
+      console.error('Erreur de chargement du fichier JSON resultat');
+    }
+
+    //const url_teams = "static/teams.json";
+    let xhr_teams = new XMLHttpRequest();
+    xhr_teams.overrideMimeType("application/json");
+    xhr_teams.open("GET", url_teams, false); // Notez-le "false" pour le mode synchrone
+    xhr_teams.send();
+
+    //let teams_json;
+
+    if (xhr_teams.status === 200) {
+      teams_json = JSON.parse(xhr_teams.responseText);
+    } else {
+      console.error('Erreur de chargement du fichier JSON teams_json');
+    }
+})
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
