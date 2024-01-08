@@ -605,7 +605,9 @@ for(let i=23;i>6;i--){
     }
     option.addEventListener('change',function(){
         let titre = document.getElementById("mon-titre")
-        titre.textContent = "Draw probailities " + option.text
+        console.log("on y est")
+        console.log(titre)
+        titre.textContent = "Draw probabilities " + option.text
     })
     menu_der.add(option)
 }
