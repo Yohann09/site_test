@@ -1093,10 +1093,10 @@ function change_graph(){
         for (let j = 0; j < Runners_up.length; j++) {
             let id = Runners_up[i] + " " + Winners[j]
             let cell = document.getElementById(id)
-            if(mat_biais[i+1][j+1]>0){
+            if(mat_biais[j+1][i+1]>0){
                 cell.backgroundColor = "green"
             }
-            else if(mat_biais[i+1][j+1]<0){
+            else if(mat_biais[j+1][i+1]<0){
                 cell.backgroundColor = "red"
             }
             else{
@@ -1110,7 +1110,7 @@ bouton_biais.addEventListener("click", function(){
         for (let j = 0; j < Runners_up.length; j++) {
             let id = Runners_up[i] + " " + Winners[j]
             let cell = document.getElementById(id)
-            cell.textContent = mat_biais[i+1][j+1]
+            cell.textContent = mat_biais[j+1][i+1]
         }
     }
 })
