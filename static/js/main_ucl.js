@@ -587,13 +587,18 @@ let boutons_winners = []    // Ce sont les boutons qui sont toujours affichés s
 let boutons_runner = []     // cad les équipes qui n'ont pas été choisies
 let chosen_team = []   // Crée la liste des équipes choisies qui sert pour l'instant pour le undo
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////titre////////////////////////////////////////////////////////////
 
 let menu_der = document.getElementById("menu-deroulant")
 for(let i=23;i>6;i--){
     let option = document.createElement('option')
-    option.value = String(i)+"/"+String(i+1)
-    option.text = "20"+String(i)+"/"+String(i+1)
+    if(i>9){
+        option.value = String(i)+"/"+String(i+1)
+        option.text = "20"+String(i)+"/"+String(i+1)
+    }else{
+        option.value = "0"+String(i)+"/"+"0"+String(i+1)
+        option.text = "200"+String(i)+"/"+"0"+String(i+1)
+    }
     menu_der.add(option)
 }
 
