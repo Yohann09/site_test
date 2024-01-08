@@ -1095,8 +1095,8 @@ bouton_biais.addEventListener("click", function(){
             let cell = document.getElementById(id)
             console.log(mat_biais[i][j])
             cell.textContent = mat_biais[i][j]
-        })
-    })
+        }
+    }
 })
 
 // Rempli le tableau des probas
