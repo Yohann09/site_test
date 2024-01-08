@@ -1094,13 +1094,13 @@ function change_graph_bias(){
             let id = Runners_up[i] + " " + Winners[j]
             let cell = document.getElementById(id)
             if(mat_biais[j+1][i+1]>0){
-                cell.backgroundColor = "green"
+                cell.style.backgroundColor = "green"
             }
             else if(mat_biais[j+1][i+1]<0){
-                cell.backgroundColor = "red"
+                cell.style.backgroundColor = "red"
             }
             else{
-                cell.backgroundColor = "grey"
+                cell.style.backgroundColor = "grey"
             }
         }
     }
