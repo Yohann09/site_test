@@ -603,14 +603,14 @@ for(let i=23;i>6;i--){
         option.value = "0"+String(i)+"/"+"0"+String(i+1)
         option.text = "200"+String(i)+"/"+"0"+String(i+1)
     }
-    option.addEventListener('change',function(){
+    menu_der.add(option)
+}
+menu_der.addEventListener('change',function(){
         let titre = document.getElementById("mon-titre")
         console.log("on y est")
         console.log(titre)
-        titre.textContent = "Draw probabilities " + option.text
+        titre.textContent = "Draw probabilities " + menu_der.text
     })
-    menu_der.add(option)
-}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
