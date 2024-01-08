@@ -592,7 +592,7 @@ let chosen_team = []   // Crée la liste des équipes choisies qui sert pour l'i
 let menu_der = document.getElementById("menu-deroulant")
 for(let i=23;i>6;i--){
     let option = document.createElement('option')
-    if(i>10){
+    if(i>9){
         option.value = String(i)+"/"+String(i+1)
         option.text = "20"+String(i)+"/"+String(i+1)
     }else if (i===9) {
