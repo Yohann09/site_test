@@ -620,11 +620,12 @@ menu_der.addEventListener('change',function(){
 
     if (xhr.status === 200) {
       resultat = JSON.parse(xhr.responseText);
+      console.log("on change de fichier")
     } else {
       console.error('Erreur de chargement du fichier JSON resultat');
     }
 
-    //const url_teams = "static/teams.json";
+    url_teams = "static/teams_"+annee+".json";
     let xhr_teams = new XMLHttpRequest();
     xhr_teams.overrideMimeType("application/json");
     xhr_teams.open("GET", url_teams, false); // Notez-le "false" pour le mode synchrone
@@ -634,6 +635,7 @@ menu_der.addEventListener('change',function(){
 
     if (xhr_teams.status === 200) {
       teams_json = JSON.parse(xhr_teams.responseText);
+      console.log("on charge les nouvelles équipes")
     } else {
       console.error('Erreur de chargement du fichier JSON teams_json');
     }
