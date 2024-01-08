@@ -1094,7 +1094,7 @@ bouton_biais.addEventListener("click", function(){
             let id = Runners_up[i] + " " + Winners[j]
             let cell = document.getElementById(id)
             console.log(mat_biais[i][j])
-            cell.textContent = mat_biais[i][j]
+            cell.textContent = mat_biais[i+1][j+1]
         }
     }
 })
