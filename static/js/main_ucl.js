@@ -1088,7 +1088,7 @@ let bouton_biais = document.createElement("button")
 bouton_biais.id = "boutons_biais"
 bouton_biais.textContent="Bias"
 optionsButtonContainer.appendChild(bouton_biais)
-function change_graph(){
+function change_graph_bias(){
     for(let i=0;i<Winners.length;i++) {
         for (let j = 0; j < Runners_up.length; j++) {
             let id = Runners_up[i] + " " + Winners[j]
@@ -1113,6 +1113,7 @@ bouton_biais.addEventListener("click", function(){
             cell.textContent = mat_biais[j+1][i+1]
         }
     }
+    change_graph_bias()
 })
 
 // Rempli le tableau des probas
