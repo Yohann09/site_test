@@ -575,10 +575,6 @@ G_init.winners().forEach(function(name){
   winners_resultat.push(name)
   Winners.push(changeSpaceby_(name))
 })
-console.log(G_init.winners())
-console.log(G_init.runners_up())
-console.log(winners_resultat)
-console.log(runners_resultat)
 
 let affichage_winners = false  // pour savoir quel type de boutons est affiché
 let affichage_heatmap = false
@@ -590,6 +586,18 @@ const default_cell_match = "........."
 let boutons_winners = []    // Ce sont les boutons qui sont toujours affichés sur le site
 let boutons_runner = []     // cad les équipes qui n'ont pas été choisies
 let chosen_team = []   // Crée la liste des équipes choisies qui sert pour l'instant pour le undo
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+let menu_der = document.getElementById("menu-deroulant")
+for(let i=23;i>6;i--){
+    let option = document.createElement('option')
+    option.value = String(i)+"/"+String(i+1)
+    option.text = "20"+String(i)+"/"+String(i+1)
+    menu_der.add(option)
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Initialise tous les boutons et affiche dans un premier temps les winners
 let taille_boucle = Math.max(Winners.length,Runners_up.length)
