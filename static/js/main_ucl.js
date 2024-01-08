@@ -611,6 +611,7 @@ menu_der.addEventListener('change',function(){
     let annee = menu_der.value.replace(/\//g, '')
     // Remplacez le chemin par le chemin absolu vers votre fichier JSON
     url = "static/isom_"+annee+".json";
+    console.log(url)
     let xhr = new XMLHttpRequest();
     xhr.overrideMimeType("application/json");
     xhr.open("GET", url, false); // Notez-le "false" pour le mode synchrone
@@ -626,6 +627,7 @@ menu_der.addEventListener('change',function(){
     }
 
     url_teams = "static/teams_"+annee+".json";
+    console.log(url_teams)
     let xhr_teams = new XMLHttpRequest();
     xhr_teams.overrideMimeType("application/json");
     xhr_teams.open("GET", url_teams, false); // Notez-le "false" pour le mode synchrone
