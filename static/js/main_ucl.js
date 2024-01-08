@@ -582,6 +582,7 @@ console.log(runners_resultat)
 
 let affichage_winners = false  // pour savoir quel type de boutons est affiché
 let affichage_heatmap = false
+let affichage_biais = false
 
 const default_cell_match = "........."
 
@@ -1089,6 +1090,7 @@ bouton_biais.id = "boutons_biais"
 bouton_biais.textContent="Bias"
 optionsButtonContainer.appendChild(bouton_biais)
 function change_graph_bias(){
+    without_graphism()
     for(let i=0;i<Winners.length;i++) {
         for (let j = 0; j < Runners_up.length; j++) {
             let id = Runners_up[i] + " " + Winners[j]
@@ -1106,14 +1108,22 @@ function change_graph_bias(){
     }
 }
 bouton_biais.addEventListener("click", function(){
-    for(let i=0;i<Winners.length;i++) {
-        for (let j = 0; j < Runners_up.length; j++) {
-            let id = Runners_up[i] + " " + Winners[j]
-            let cell = document.getElementById(id)
-            cell.textContent = mat_biais[j+1][i+1]
+    if(!affichage_biais){
+        affichage_biais = !affichage_biais
+        for (let i = 0; i < Winners.length; i++) {
+            for (let j = 0; j < Runners_up.length; j++) {
+                let id = Runners_up[i] + " " + Winners[j]
+                let cell = document.getElementById(id)
+                cell.textContent = mat_biais[j + 1][i + 1]
+            }
         }
+        change_graph_bias()
+    }else{
+        affichage_biais = !affichage_biais
+        fill_all2()
+        change_graphism()
+        verif_zero()
     }
-    change_graph_bias()
 })
 
 // Rempli le tableau des probas
