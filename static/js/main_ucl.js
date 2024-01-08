@@ -603,6 +603,10 @@ for(let i=23;i>6;i--){
         option.value = "0"+String(i)+"/"+"0"+String(i+1)
         option.text = "200"+String(i)+"/"+"0"+String(i+1)
     }
+    option.addEventListener('change',function(){
+        let titre = document.getElementById("mon-titre")
+        titre.textContent = "Draw probailities " + option.text
+    })
     menu_der.add(option)
 }
 
