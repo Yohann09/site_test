@@ -644,11 +644,18 @@ menu_der.addEventListener('change',function(){
     } else {
       console.error('Erreur de chargement du fichier JSON teams_json');
     }
+    change_teams_name()
 })
 
-def change_teams_name():
+function change_teams_name(){
+    let compteur = 0
+    teams_json_init.forEach(function(team_name){
+        let cell = document.getElementById("team-cell"+team_name)
+        cell.textContent = teams_json[compteur]
+        compteur++
+    })
+}
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Initialise tous les boutons et affiche dans un premier temps les winners
 let taille_boucle = Math.max(Winners.length,Runners_up.length)
@@ -1195,6 +1202,7 @@ Winners.forEach(function(name){
     let team = document.createElement("th")
     team.textContent = change_bySpace(name)
     team.className = "team-cell " + name  // ajoute une classe pour que la cellule s'illumine quand équipe sélectionnée
+    team.id = "team-cell" + name
     team_line.appendChild(team)
 })
 team_line.className = "team-line"
@@ -1207,6 +1215,7 @@ for(let i=0; i<Runners_up.length; i++){
             let team = document.createElement("td")
             team.textContent = change_bySpace(Runners_up[i])
             team.className = "cell-team " + Runners_up[i] // ajoute une classe pour que la cellule s'illumine quand équipe sélectionnée
+            team.id = "team-cell" + name
             line.appendChild(team)
         }else{
             let cell = document.createElement("td")
