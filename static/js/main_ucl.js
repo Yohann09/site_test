@@ -30,7 +30,7 @@ if (xhr_teams.status === 200) {
   console.error('Erreur de chargement du fichier JSON teams_json');
 }
 console.log(teams_json)
-let teams_json_init = teams_json.slice()
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 /* Fonction qui fait l'appel à la base de donnée pour charger la base de donnée et renvoie un dictionnaire
 de proba ou remplit elle même le tableau */
@@ -527,7 +527,8 @@ for(let i=0; i<16; i++){
   team = new Team(teams_json[key]["_name"], teams_json[key]["_country"], teams_json[key]["_group"], teams_json[key]["_set"])
   teams.push(team)
 }
-
+let team = teams_json.slice()
+console.log("team: ", team)
 teams.forEach(element => {
     G_init.add_team(element)
 });
