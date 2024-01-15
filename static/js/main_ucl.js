@@ -39,11 +39,15 @@ for(let i=23;i>6;i--){
         option.value = String(i)+"/"+String(i+1)
         option.text = "20"+String(i)+"/"+String(i+1)
     }else if (i===9) {
-        option.value = "0"+String(i)+"/"+String(i+1)
+        option.value = String(i)+"/"+String(i+1)
         option.text = "200"+String(i)+"/"+String(i+1)
     }
     else{
+        /*
         option.value = "0"+String(i)+"/"+"0"+String(i+1)
+        option.text = "200"+String(i)+"/"+"0"+String(i+1)
+        */
+        option.value = String(i)+"/"+String(i+1)
         option.text = "200"+String(i)+"/"+"0"+String(i+1)
     }
     menu_der.add(option)
