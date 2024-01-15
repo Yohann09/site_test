@@ -22,7 +22,7 @@ xhr_teams.open("GET", url_teams, false); // Notez-le "false" pour le mode synchr
 xhr_teams.send();
 
 let teams_json;
-let teams_json_init = teams_json.slice()
+
 
 if (xhr_teams.status === 200) {
   teams_json = JSON.parse(xhr_teams.responseText);
@@ -30,6 +30,7 @@ if (xhr_teams.status === 200) {
   console.error('Erreur de chargement du fichier JSON teams_json');
 }
 console.log(teams_json)
+let teams_json_init = teams_json.slice()
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 /* Fonction qui fait l'appel à la base de donnée pour charger la base de donnée et renvoie un dictionnaire
 de proba ou remplit elle même le tableau */
