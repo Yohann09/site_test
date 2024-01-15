@@ -617,6 +617,29 @@ function run(resultat,teams_json){
         ['BCN', -0.08, 0.04, 0.04, 0.04, 0.04, -0.08, 0.0, 0.0]
     ]
 
+    // Sélectionne le conteneur des boutons des équipes
+    let boutonContainer = document.getElementById("bouton-container"); // contient tous les boutons et titres de
+    // sections en bas de page
+    let buttonTeamContainer = document.createElement("div")
+    buttonTeamContainer.id = "team-button"
+    buttonTeamContainer.classList.add("todelete")
+    boutonContainer.appendChild(buttonTeamContainer)
+    let nameSection = document.createElement("p")
+    nameSection.id = "section-team-button"
+    nameSection.textContent = "Draw teams: "
+    nameSection.classList.add("todelete")
+    buttonTeamContainer.appendChild(nameSection)
+
+    // Nom des équipes en un morceau plus pratique à manipuler
+    //let Winners = ["Napoli", "Porto", "Bayern", "Tottenham", "Chelsea", "Real_Madrid", "Manchester_City", "Benfica"];
+    //let Runners_up = ["Liverpool", "Brugge", "Inter", "Frankfurt", "AC_Milan", "Leipzig", "Dortmund", "PSG"]
+    // Liste des équipes comme elles sont écrites dans le fichier resultat.json
+
+    //let runners_resultat = ['Liverpool', 'Brugge', 'Inter', 'Frankfurt', 'AC Milan', 'Leipzig', 'Dortmund', 'PSG']
+    //let winners_resultat = ['Napoli', 'Porto', 'Bayern', 'Tottenham', 'Chelsea', 'Real Madrid', 'Manchester City', 'Benfica']
+    let runners_resultat = []
+    let Winners = [];
+    let Runners_up = [];
 
     G_init.runners_up().forEach(function(name){
       runners_resultat.push(name)
