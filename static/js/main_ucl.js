@@ -527,7 +527,7 @@ for(let i=0; i<16; i++){
   team = new Team(teams_json[key]["_name"], teams_json[key]["_country"], teams_json[key]["_group"], teams_json[key]["_set"])
   teams.push(team)
 }
-let teams = teams_json.slice()
+let teams_init = teams.slice()
 console.log("team: ", teams)
 teams.forEach(element => {
     G_init.add_team(element)
