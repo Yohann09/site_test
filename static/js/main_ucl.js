@@ -617,7 +617,7 @@ function run(resultat,teams_json){
         ['BCN', -0.08, 0.04, 0.04, 0.04, 0.04, -0.08, 0.0, 0.0]
     ]
 
-    // Sélectionne le conteneur des boutons des équipes
+    //  Sélectionne le conteneur des boutons des équipes
     let boutonContainer = document.getElementById("bouton-container"); // contient tous les boutons et titres de
     // sections en bas de page
     let buttonTeamContainer = document.createElement("div")
