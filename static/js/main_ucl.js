@@ -82,6 +82,10 @@ menu_der.addEventListener('change',function(){
     } else {
         console.error('Erreur de chargement du fichier JSON teams_json');
     }
+    let elementsASupprimer = document.getElementsByClassName('todelete');
+    while (elementsASupprimer.length > 0) {
+        elementsASupprimer[0].parentNode.removeChild(elementsASupprimer[0]);
+    }
     run(resultat, teams_json)
 })
   /*
@@ -613,27 +617,7 @@ function run(resultat,teams_json){
         ['BCN', -0.08, 0.04, 0.04, 0.04, 0.04, -0.08, 0.0, 0.0]
     ]
 
-    // Sélectionne le conteneur des boutons des équipes
-    let boutonContainer = document.getElementById("bouton-container"); // contient tous les boutons et titres de
-    // sections en bas de page
-    let buttonTeamContainer = document.createElement("div")
-    buttonTeamContainer.id = "team-button"
-    boutonContainer.appendChild(buttonTeamContainer)
-    let nameSection = document.createElement("p")
-    nameSection.id = "section-team-button"
-    nameSection.textContent = "Draw teams: "
-    buttonTeamContainer.appendChild(nameSection)
 
-    // Nom des équipes en un morceau plus pratique à manipuler
-    //let Winners = ["Napoli", "Porto", "Bayern", "Tottenham", "Chelsea", "Real_Madrid", "Manchester_City", "Benfica"];
-    //let Runners_up = ["Liverpool", "Brugge", "Inter", "Frankfurt", "AC_Milan", "Leipzig", "Dortmund", "PSG"]
-    // Liste des équipes comme elles sont écrites dans le fichier resultat.json
-
-    //let runners_resultat = ['Liverpool', 'Brugge', 'Inter', 'Frankfurt', 'AC Milan', 'Leipzig', 'Dortmund', 'PSG']
-    //let winners_resultat = ['Napoli', 'Porto', 'Bayern', 'Tottenham', 'Chelsea', 'Real Madrid', 'Manchester City', 'Benfica']
-    let runners_resultat = []
-    let Winners = [];
-    let Runners_up = [];
     G_init.runners_up().forEach(function(name){
       runners_resultat.push(name)
       Runners_up.push(changeSpaceby_(name))
@@ -666,6 +650,7 @@ function run(resultat,teams_json){
             let bouton = document.createElement("button");
             bouton.textContent = change_bySpace(Winners[i]);
             bouton.className = "winner";
+            bouton.classList.add("todelete")
             buttonTeamContainer.appendChild(bouton);
             boutons_winners.push(bouton);
             bouton.style.display="none";
@@ -674,6 +659,7 @@ function run(resultat,teams_json){
             let bouton = document.createElement("button");
             bouton.textContent = change_bySpace(Runners_up[i]);
             bouton.className = "runner_up";
+            bouton.classList.add("todelete")
             buttonTeamContainer.appendChild(bouton);
             boutons_runner.push(bouton);
         }
@@ -917,6 +903,7 @@ function run(resultat,teams_json){
                 let new_cell = document.createElement("td")
                 new_cell.textContent = " - "
                 new_cell.className = "cell-center"
+                new_cell.classList.add("todelete")
                 new_line.appendChild(new_cell)
             } else {
                 let new_cell = document.createElement("td")
@@ -924,10 +911,12 @@ function run(resultat,teams_json){
                 // id pour récupérer ensuite la cellule et en modifier le contenu
                 new_cell.id = String(i) + "_" + String(j)
                 new_cell.className = "cell-match-table"
+                new_cell.classList.add("todelete")
                 new_line.appendChild(new_cell)
             }
         }
         new_line.className = "line-match-table"
+        new_line.classList.add("todelete")
         tableMatch.appendChild(new_line)
     }
 
@@ -1006,20 +995,24 @@ function run(resultat,teams_json){
     // Contient le nom de la section et le conteneur des boutons
     let optionsContainer = document.createElement("div")
     optionsContainer.id="options-container"
+    optionsContainer.classList.add("todelete")
     boutonContainer.appendChild(optionsContainer)
     // Section qui contient les boutons des options
     let optionsButtonContainer = document.createElement("div")
     optionsButtonContainer.id="options_boutons"
+    optionsButtonContainer.classList.add("todelete")
     optionsContainer.appendChild(optionsButtonContainer)
     // bouton undo inclu dans le conteneur de boutons des options
     let undo_button = document.createElement("button")
     undo_button.id="undo"
     undo_button.textContent="Undo"
+    undo_button.classList.add("todelete")
     optionsButtonContainer.appendChild(undo_button)
     // Section qui contient le titre du optionsContainer
     let undoSection = document.createElement("p")
     undoSection.id ="undo-name-section"
     undoSection.textContent="Options: "
+    undoSection.classList.add("todelete")
     optionsContainer.appendChild(undoSection)
     // Touche pour revenir en arrière, enlever la dernière équipe ajoutée
     undo_button.addEventListener("click", function(event){
@@ -1130,6 +1123,7 @@ function run(resultat,teams_json){
     let restart_button = document.createElement("button")
     restart_button.id = "restart-button"
     restart_button.textContent = "Restart"
+    restart_button.classList.add("todelete")
     optionsButtonContainer.appendChild(restart_button)
     restart_button.addEventListener("click",function(event){
         while(chosen_team.length>0){
@@ -1140,6 +1134,7 @@ function run(resultat,teams_json){
     let heatmap_button = document.createElement("button")
     heatmap_button.id="heatmap-button"
     heatmap_button.textContent="Heatmap"
+    heatmap_button.classList.add("todelete")
     optionsButtonContainer.appendChild(heatmap_button)
     heatmap_button.addEventListener("click",function(){
         if(!affichage_heatmap){
@@ -1156,6 +1151,7 @@ function run(resultat,teams_json){
     let bouton_biais = document.createElement("button")
     bouton_biais.id = "boutons_biais"
     bouton_biais.textContent="Bias"
+    bouton_biais.classList.add("todelete")
     optionsButtonContainer.appendChild(bouton_biais)
     function change_graph_bias(){
         without_graphism()
@@ -1198,12 +1194,15 @@ function run(resultat,teams_json){
     // Rempli la première ligne avec les équipes
     let table = document.getElementById("proba-table")
     let team_line = document.createElement("tr")
+    team_line.classList.add("todelete")
     let vide = document.createElement("th")
+    vide.classList.add("todelete")
     team_line.appendChild(vide)
     Winners.forEach(function(name){
         let team = document.createElement("th")
         team.textContent = change_bySpace(name)
-        team.className = "team-cell " + name  // ajoute une classe pour que la cellule s'illumine quand équipe sélectionnée
+        team.className = "team-cell " + name  // ajoute une classe pour que la cellule s'illumine quand équipe sélectionnée*
+        team.classList.add("todelete")
         team.id = "team-cell" + name
         team_line.appendChild(team)
     })
@@ -1217,6 +1216,7 @@ function run(resultat,teams_json){
                 let team = document.createElement("td")
                 team.textContent = change_bySpace(Runners_up[i])
                 team.className = "cell-team " + Runners_up[i] // ajoute une classe pour que la cellule s'illumine quand équipe sélectionnée
+                team.classList.add("todelete")
                 team.id = "team-cell" + name
                 line.appendChild(team)
             }else{
@@ -1227,10 +1227,12 @@ function run(resultat,teams_json){
                 cell.id =  Runners_up[i]+" "+ Winners[j-1]
                 cell.className = "proba-cell " + Winners[j-1] +" "+ Runners_up[i] // ajoute une classe pour que la cellule s'illumine quand équipe sélectionnée
                 //change_proba(cell,"('Liverpool', 'Brugge', 'Inter', 'Frankfurt', 'AC Milan', 'Leipzig', 'Dortmund', 'PSG'), ('Napoli', 'Porto', 'Bayern', 'Tottenham', 'Chelsea', 'Real Madrid', 'Manchester City', 'Benfica')",change_bySpace(Runners_up[i])+", "+change_bySpace(Winners[j-1]))
+                cell.classList.add("todelete")
                 line.appendChild(cell)
             }
         }
         line.className = "proba-line"
+        line.classList.add("todelete")
         table.appendChild(line)
     }
     //fill_all()
