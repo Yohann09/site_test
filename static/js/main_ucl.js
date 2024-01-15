@@ -22,6 +22,7 @@ xhr_teams.open("GET", url_teams, false); // Notez-le "false" pour le mode synchr
 xhr_teams.send();
 
 let teams_json;
+let teams_json_init = teams_json.slice()
 
 if (xhr_teams.status === 200) {
   teams_json = JSON.parse(xhr_teams.responseText);
@@ -590,6 +591,7 @@ let chosen_team = []   // Crée la liste des équipes choisies qui sert pour l'i
 ///////////////////////////////////////////////////////////titre////////////////////////////////////////////////////////////
 
 let menu_der = document.getElementById("menu-deroulant")
+// On ajoute les options au menu déroulant
 for(let i=23;i>6;i--){
     let option = document.createElement('option')
     if(i>9){
@@ -638,10 +640,13 @@ menu_der.addEventListener('change',function(){
     if (xhr_teams.status === 200) {
       teams_json = JSON.parse(xhr_teams.responseText);
       console.log("on charge les nouvelles équipes")
+        console.log(teams_json)
     } else {
       console.error('Erreur de chargement du fichier JSON teams_json');
     }
 })
+
+def change_teams_name():
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
